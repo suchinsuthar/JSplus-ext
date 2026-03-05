@@ -7,11 +7,14 @@
 </p>
 
 <p align="center">
-  <img alt="GitHub License" src="https://img.shields.io/github/license/suchinsuthar/jsplus-ext">
+  <img/src="http://img.shields.io/github/license/suchinsuthar/jsplus-ext">
   <img src="https://img.shields.io/github/stars/suchinsuthar/JSplus-ext?style=flat">
   <img src="https://img.shields.io/github/issues/suchinsuthar/JSplus-ext">
   <img alt="GitHub Release" src="https://img.shields.io/github/v/release/suchinsuthar/jsplus-ext">
+  <img alt="Website" src="https://img.shields.io/badge/website-live-blue">
 </p>
+
+🌐 Website: https://suchinsuthar.github.io/JSplus-ext/
 
 A powerful Chrome extension that intercepts and analyzes JavaScript requests using AI models. Designed for security researchers and bug bounty hunters to identify potential vulnerabilities in web applications.
 
