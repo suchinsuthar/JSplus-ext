@@ -1,8 +1,17 @@
-# JS+ Capture JavaScript URLs and scan with AI
+<p align="center">
+<img width="256" alt="JS+" src="https://github.com/user-attachments/assets/c195c9a1-fac7-4c00-8555-6a208f7b02e8" />
+</p>
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Chrome](https://img.shields.io/badge/Chrome-MV3-green)
+<p align="center">
+  Capture JavaScript requests and scan with AI models.
+</p>
+
+<p align="center">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/suchinsuthar/jsplus-ext">
+  <img src="https://img.shields.io/github/stars/suchinsuthar/JSplus-ext?style=flat">
+  <img src="https://img.shields.io/github/issues/suchinsuthar/JSplus-ext">
+  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/suchinsuthar/jsplus-ext">
+</p>
 
 A powerful Chrome extension that intercepts and analyzes JavaScript requests using AI models. Designed for security researchers and bug bounty hunters to identify potential vulnerabilities in web applications.
 
@@ -39,13 +48,17 @@ A powerful Chrome extension that intercepts and analyzes JavaScript requests usi
 *(Not available now, upcoming)*
 
 ### Manual Installation
-1. Download the latest version from [releases](https://github.com/suchinsuthar/jsplus-ext/releases/download/JSplus-ext/JSplus-ext-v1.0.zip)
+1. Download the latest version from [Releases](https://github.com/suchinsuthar/JSplus-ext/releases)
 1. **Clone or download** this repository
 2. Open Chrome and navigate to `chrome://extensions/`
 3. Enable **Developer Mode** (toggle in top-right)
 4. Click **Load unpacked**
 5. Select the extension folder
 6. Pin the extension for easy access
+
+## Screenshots
+<img width="256px" src='screenshots/1.png'><img width="384px" src='screenshots/2.png'><img width="384px" src='screenshots/3.png'><img width="376px" src='screenshots/4.png'><img width="384px" src='screenshots/5.png'>
+
 
 ## 🚀 Quick Start
 
@@ -148,7 +161,8 @@ MIT License - Feel free to use, modify, and distribute.
 ## ☕ Support
 - JS+ is created with <3 by [@SuchinSuthar](https://github.com/suchinsuthar) Inspired by [0xJS](https://github.com/4osp3l/0xJS)
 
-If this tool helped you find vulnerabilities or saves time in your security work, consider supporting the development: [Buy Me a Coffee](https://buymeacoffee.com/suchinsuthar) | [Star this repo]()
+If this tool helped you find vulnerabilities or saves time in your security work, consider supporting the development:  
+[Buy Me a Coffee](https://buymeacoffee.com/suchinsuthar) | [Star this repo]()
 
 ---
 
