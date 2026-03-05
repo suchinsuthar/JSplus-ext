@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS+</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon"><img style="width: 36px;;" src="icons/icon128.png"></div>
+        <div class="logo-text">
+          <div class="title">JS+</div>
+          <div class="subtitle">v1.0</div>
+        </div>
+      </div>
+      <div class="status-badge" id="statusBadge">
+        <span class="status-dot"></span>
+        <span class="status-text">OFFLINE</span>
+      </div>
+      <button class="btn btn-export header-settings-btn" id="openSettingsBtn" title="Open JS+ Settings">
+        <span class="btn-icon"><img style="width: 9px;" src="icons/settings.svg"></span>
+        <span>SETTINGS</span>
+      </button>
+    </div>
+
+    <div class="update-banner" id="updateBanner" style="display: none;">
+      <span class="update-banner-icon"><img style="width: 12px;"  src="icons/git-pull-request.svg"></span>
+      <span class="update-banner-text">New version <strong id="updateVersion"></strong> available!</span>
+      <a class="update-banner-link" id="updateLink" href="#" target="_blank">DOWNLOAD</a>
+      <button class="update-banner-dismiss" id="dismissUpdateBtn" title="Dismiss"><img style="width: 12px;" src="icons/x.svg"></button>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-icon"><img style="width: 12px;" src="icons/target.svg"></span>
+        <span class="section-title">TARGET_DOMAINS</span>
+      </div>
+      <div class="input-group">
+        <input 
+          type="text" 
+          id="patternInput" 
+          class="pattern-input" 
+          placeholder="*.target.com"
+          spellcheck="false"
+        >
+        <button class="btn btn-add" id="addPatternBtn">
+          <span>+</span>
+        </button>
+      </div>
+      <div class="patterns-list" id="patternsList">
+      </div>
+      <div class="hint">
+        Use wildcards: *.target.*, *.targret.com
+      </div>
+    </div>
+
+    <div class="section controls-section">
+      <div class="controls">
+        <button class="btn btn-primary" id="toggleMonitorBtn">
+          <span class="btn-icon">▶</span>
+          <span class="btn-text">START_MONITORING</span>
+        </button>
+        <button class="btn btn-secondary" id="clearBtn">
+          <span class="btn-icon"><img style="width: 15px;" src="icons/trash-2.svg"></span>
+          <span class="btn-text">CLEAR</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-icon"><img style="width: 15px;" src="icons/antenna.svg"></span>
+        <span class="section-title">CAPTURED_REQUESTS <span id="capturedCount">0</span></span>
+        <div class="export-buttons">
+          <button class="btn btn-export" id="fullPageBtn" title="Open in full page">
+            <span class="btn-icon"><img style="width: 18px;" src="icons/external-link.svg"></span>
+            <span></span>
+          </button>
+          <button class="btn btn-export" id="exportUrlsBtn" title="Export URLs only">
+            <span class="btn-icon"><img style="width: 18px;" src="icons/clipboard.svg"></span>
+            <span></span>
+          </button>
+          <button class="btn btn-export" id="exportBtn" title="Export full details">
+            <span class="btn-icon"><img style="width: 18px;" src="icons/save.svg"></span>
+            <span>JSON</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="filter-section">
+        <div class="filter-input-group">
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="filter-input" 
+            placeholder="Filter by domain, path, or URL..."
+            spellcheck="false"
+          >
+          <button class="btn btn-regex" id="regexToggle" title="Toggle regex mode">
+            <span class="btn-icon"><img style="width: 15px;" src="icons/regex.svg"></span>
+          </button>
+          <button class="btn btn-invert" id="invertToggle" title="Invert search (show non-matching results)">
+            <span class="btn-icon">i</span>
+          </button>
+          <button class="btn btn-favorites" id="favoritesToggle" title="Show favorites only">
+            <span class="btn-icon"><img style="width: 15px;" src="icons/star.svg"></span>
+          </button>
+          <button class="btn btn-clear-search" id="clearSearchBtn" title="Clear filter">
+            <span class="btn-icon"><img style="width: 15px;" src="icons/x.svg"></span>
+          </button>
+        </div>
+        <div class="filter-info">
+          <span class="filter-count" id="filterCount" style="display: none;">0 / 0</span>
+        </div>
+      </div>
+      
+      <div class="requests-container" id="requestsContainer">
+        <div class="empty-state">
+          <div class="empty-icon"><img style="width: 18px;" src="icons/mailbox.svg"></div>
+          <div class="empty-text">No requests captured yet</div>
+          <div class="empty-hint">Configure targets and start monitoring</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
