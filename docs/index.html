@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS+ | Monitor and Analyzer JS URLs using AI Models</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="../icons/icon128.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        theme: {
+                            bg1: '#0a0e14',
+                            bg2: '#151a23',
+                            bg3: '#1c222e',
+                            green: '#00ff9f',
+                            blue: '#00d4ff',
+                            red: '#ff3366',
+                            text1: '#e6e8eb',
+                            text2: '#8b92a0',
+                            border: '#2a3241',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                    },
+                    boxShadow: {
+                        'neon-green': '0 0 20px rgba(0, 255, 159, 0.4)',
+                        'neon-blue': '0 0 20px rgba(0, 212, 255, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        .glass-panel {
+            background: rgba(21, 26, 35, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid #2a3241;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #00ff9f, #00d4ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        pre {
+            background-color: #0a0e14 !important;
+            border: 1px solid #2a3241;
+        }
+    </style>
+</head>
+<body class="bg-theme-bg1 text-theme-text1 font-sans antialiased selection:bg-theme-green selection:text-theme-bg1">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-theme-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <img src="logo.png" alt="JS+ Logo" class="h-8 w-8 object-contain">
+                    <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-theme-green to-theme-blue tracking-tight">
+                        JS+
+                    </span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#features" class="text-theme-text2 hover:text-theme-green transition-colors px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                        <a href="#installation" class="text-theme-text2 hover:text-theme-green transition-colors px-3 py-2 rounded-md text-sm font-medium">Install</a>
+                        <a href="#quickstart" class="text-theme-text2 hover:text-theme-green transition-colors px-3 py-2 rounded-md text-sm font-medium">Quick Start</a>
+                        <a href="#config" class="text-theme-text2 hover:text-theme-green transition-colors px-3 py-2 rounded-md text-sm font-medium">Config</a>
+                        
+                        <!-- Support & GitHub Options -->
+                        <div class="flex items-center gap-3">
+                            <a href="https://github.com/suchinsuthar/jsplus-ext" target="_blank" class="bg-theme-bg3 hover:bg-theme-border text-theme-text1 px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 border border-theme-border">
+                                <i class="fa-brands fa-github text-lg"></i> Star
+                            </a>
+                            <a href="https://buymeacoffee.com/suchinsuthar" target="_blank" class="bg-[#FFDD00] hover:bg-[#FFEA4C] text-black px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 shadow-lg shadow-[#FFDD00]/20">
+                                <i class="fa-solid fa-mug-hot"></i> Buy me a coffee
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-theme-green rounded-full mix-blend-multiply filter blur-[128px] opacity-10"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-theme-blue rounded-full mix-blend-multiply filter blur-[128px] opacity-10"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-theme-bg2 border border-theme-border text-theme-text2 text-sm mb-8 font-mono">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-green opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-theme-green"></span>
+                </span>
+                <span class="text-theme-green">v1.0.0</span> is out now!
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-theme-text1">
+                Analyze JavaScript with <span class="gradient-text">AI Models</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-theme-text2 mb-10">
+                A powerful Chrome extension for security researchers to intercept, filter, and discover vulnerabilities in JS urls using multi-model AI.
+            </p>
+            <div class="flex justify-center gap-4 flex-col sm:flex-row">
+                <a href="#installation" class="bg-theme-bg3 border border-theme-green text-theme-green hover:bg-theme-green hover:text-theme-bg1 px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1 shadow-neon-green flex items-center justify-center gap-2 font-mono">
+                    <i class="fa-brands fa-chrome"></i> Get Extension
+                </a>
+                <a href="#quickstart" class="glass-panel text-theme-text1 hover:border-theme-blue hover:text-theme-blue px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 font-mono">
+                    <i class="fa-solid fa-code"></i> Documentation
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="py-20 bg-theme-bg2 border-y border-theme-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-theme-text1 mb-4 font-mono select-none">Everything you need for JS Monitoring</h2>
+                <p class="text-theme-text2 max-w-2xl mx-auto">Equipped with cutting-edge tool to intercept js traffic and unleash AI on potential vulnerabilities.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-transform border border-transparent hover:border-theme-green/50">
+                    <div class="w-12 h-12 bg-theme-green/10 rounded-lg flex items-center justify-center mb-6 border border-theme-green/20">
+                        <i class="fa-solid fa-bullseye text-theme-green text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-3">Target Domain Filtering</h3>
+                    <p class="text-theme-text2 text-sm">Monitor specific domains with wildcard support (*.target.*, *.target.com) to cut through the noise.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-transform border border-transparent hover:border-theme-blue/50">
+                    <div class="w-12 h-12 bg-theme-blue/10 rounded-lg flex items-center justify-center mb-6 border border-theme-blue/20">
+                        <i class="fa-solid fa-microchip text-theme-blue text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-3">Multi-Model AI Scanning</h3>
+                    <p class="text-theme-text2 text-sm">Analyze code via Google Gemini, OpenAI ChatGPT, Anthropic Claude, or DeepSeek for vulnerabilities.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-transform border border-transparent hover:border-theme-green/50">
+                    <div class="w-12 h-12 bg-theme-green/10 rounded-lg flex items-center justify-center mb-6 border border-theme-green/20">
+                        <i class="fa-solid fa-satellite-dish text-theme-green text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-3">Real-time Interception</h3>
+                    <p class="text-theme-text2 text-sm">Capture all JS/JSX/TS/TSX/JSON requests on the fly with live status monitoring.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-transform border border-transparent hover:border-theme-blue/50">
+                    <div class="w-12 h-12 bg-theme-blue/10 rounded-lg flex items-center justify-center mb-6 border border-theme-blue/20">
+                        <i class="fa-solid fa-magnifying-glass text-theme-blue text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-3">Advanced Regex Search</h3>
+                    <p class="text-theme-text2 text-sm">Search by domain, path, or URL with full regex support, inversions, and favorites filtering.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-transform border border-transparent hover:border-theme-green/50">
+                    <div class="w-12 h-12 bg-theme-green/10 rounded-lg flex items-center justify-center mb-6 border border-theme-green/20">
+                        <i class="fa-solid fa-file-export text-theme-green text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-3">Robust Export Options</h3>
+                    <p class="text-theme-text2 text-sm">Export captured request data as structured JSON or pure URL lists for your external scripts.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-transform border border-transparent hover:border-theme-blue/50">
+                    <div class="w-12 h-12 bg-theme-blue/10 rounded-lg flex items-center justify-center mb-6 border border-theme-blue/20">
+                        <i class="fa-solid fa-shield-halved text-theme-blue text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-3">Secure & Local</h3>
+                    <p class="text-theme-text2 text-sm">100% Local Storage. API keys are strictly kept in your browser. No tracking, ever.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Installation & Quick Start -->
+    <div id="installation" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <!-- Installation -->
+                <div>
+                    <h2 class="text-3xl font-bold text-theme-text1 mb-6 font-mono">Installation</h2>
+                    <div class="glass-panel rounded-2xl p-8 border hover:border-theme-green/30 transition-colors">
+                        <h3 class="text-xl font-bold text-theme-text1 mb-4 flex items-center gap-2">
+                            <i class="fa-brands fa-chrome text-theme-green"></i> Manual Install
+                        </h3>
+                        <ol class="space-y-4 text-theme-text2 list-decimal list-inside marker:text-theme-blue font-sans">
+                            <li>Download the latest version from <a href="https://github.com/suchinsuthar/jsplus-ext/releases" class="text-theme-blue hover:text-theme-green transition-colors underline underline-offset-2">releases</a></li>
+                            <li>Open Chrome and navigate to <code class="text-theme-green bg-theme-bg1 border border-theme-border px-2 py-1 rounded font-mono text-sm">chrome://extensions/</code></li>
+                            <li>Enable <strong class="text-theme-text1">Developer Mode</strong> (toggle in top-right)</li>
+                            <li>Click <strong class="text-theme-text1">Load unpacked</strong></li>
+                            <li>Select the extracted extension folder</li>
+                            <li>Pin the extension for easy access</li>
+                        </ol>
+                        
+                        <div class="mt-8 p-4 bg-theme-bg1 border border-theme-border/50 rounded-xl flex items-start gap-4">
+                            <i class="fa-solid fa-info-circle text-theme-blue mt-1"></i>
+                            <p class="text-sm text-theme-text2">Chrome Web Store release is upcoming. For now, please use the manual installation method above.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Start -->
+                <div id="quickstart">
+                    <h2 class="text-3xl font-bold text-theme-text1 mb-6 font-mono">Quick Start Workflow</h2>
+                    <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-theme-green before:via-theme-blue before:to-theme-bg1">
+                        
+                        <!-- Step 1 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-theme-bg1 bg-theme-green text-theme-bg1 shadow shrink-0 z-10 font-bold font-mono">1</div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-4 rounded-xl border border-theme-border ml-4 md:ml-0 group-hover:border-theme-green/50 transition-colors">
+                                <h4 class="text-theme-text1 font-bold mb-1">Configure Target</h4>
+                                <p class="text-sm text-theme-text2">Click the extension icon and add target patterns like <code class="text-theme-green font-mono">*.target.com</code>.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-theme-bg1 bg-theme-blue text-theme-bg1 shadow shrink-0 z-10 font-bold font-mono">2</div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-4 rounded-xl border border-theme-border ml-4 md:ml-0 group-hover:border-theme-blue/50 transition-colors">
+                                <h4 class="text-theme-text1 font-bold mb-1">Start Monitoring</h4>
+                                <p class="text-sm text-theme-text2">Click <strong class="text-theme-green">START_MONITORING</strong>. The badge will turn green and requests will populate.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-theme-bg1 bg-theme-green text-theme-bg1 shadow shrink-0 z-10 font-bold font-mono">3</div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-4 rounded-xl border border-theme-border ml-4 md:ml-0 group-hover:border-theme-green/50 transition-colors">
+                                <h4 class="text-theme-text1 font-bold mb-1">Filter & Review</h4>
+                                <p class="text-sm text-theme-text2">Use regex <code class="text-theme-green">.*</code> or invert <code class="text-theme-green">i</code> to find specific code chunks.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-theme-bg1 bg-theme-blue text-theme-bg1 shadow shrink-0 z-10 font-bold font-mono">4</div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-panel p-4 rounded-xl border border-theme-border ml-4 md:ml-0 group-hover:border-theme-blue/50 transition-colors">
+                                <h4 class="text-theme-text1 font-bold mb-1">AI Scan</h4>
+                                <p class="text-sm text-theme-text2">Hit <strong class="text-theme-blue">SCAN</strong> on any URL to analyze it against your chosen AI model.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Providers & Configuration -->
+    <div id="config" class="py-20 bg-theme-bg2 border-t border-theme-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-theme-text1 mb-12 font-mono">Supported AI Engines</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Gemini -->
+                <div class="bg-theme-bg1 border border-theme-border rounded-2xl p-6 relative overflow-hidden group hover:border-theme-blue/50 transition-colors">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-brands fa-google text-6xl text-theme-blue"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-2">Google Gemini</h3>
+                    <p class="text-theme-text2 text-sm mb-4">Default model:<br/><code class="text-theme-blue font-mono mt-1 inline-block">gemini-3-flash-preview</code></p>
+                    <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-sm text-theme-blue hover:text-white inline-flex items-center gap-1 font-medium transition-colors">Get API Key <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+
+                <!-- OpenAI -->
+                <div class="bg-theme-bg1 border border-theme-border rounded-2xl p-6 relative overflow-hidden group hover:border-theme-green/50 transition-colors">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-microchip text-6xl text-theme-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-2">OpenAI ChatGPT</h3>
+                    <p class="text-theme-text2 text-sm mb-4">Default model:<br/><code class="text-theme-green font-mono mt-1 inline-block">gpt-4o</code></p>
+                    <a href="https://platform.openai.com/api-keys" target="_blank" class="text-sm text-theme-green hover:text-white inline-flex items-center gap-1 font-medium transition-colors">Get API Key <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+
+                <!-- Claude -->
+                <div class="bg-theme-bg1 border border-theme-border rounded-2xl p-6 relative overflow-hidden group hover:border-[#ff8c00]/50 transition-colors">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-brain text-6xl text-[#ff8c00]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-2">Anthropic Claude</h3>
+                    <p class="text-theme-text2 text-sm mb-4">Default model:<br/><code class="text-[#ff8c00] font-mono mt-1 inline-block">claude-3-5-sonnet</code></p>
+                    <a href="https://console.anthropic.com/account/keys" target="_blank" class="text-sm text-[#ff8c00] hover:text-white inline-flex items-center gap-1 font-medium transition-colors">Get API Key <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+
+                <!-- DeepSeek -->
+                <div class="bg-theme-bg1 border border-theme-border rounded-2xl p-6 relative overflow-hidden group hover:border-[#8b5cf6]/50 transition-colors">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-water text-6xl text-[#8b5cf6]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-theme-text1 mb-2">DeepSeek</h3>
+                    <p class="text-theme-text2 text-sm mb-4">Default model:<br/><code class="text-[#8b5cf6] font-mono mt-1 inline-block">deepseek-coder</code></p>
+                    <a href="https://platform.deepseek.com/api-keys" target="_blank" class="text-sm text-[#8b5cf6] hover:text-white inline-flex items-center gap-1 font-medium transition-colors">Get API Key <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-theme-text2 text-sm max-w-2xl mx-auto bg-theme-bg1 border border-theme-border p-4 rounded-xl">
+                <i class="fa-solid fa-gear text-theme-text2 mr-2"></i> Paste your API Keys directly in the extension: <br/>
+                <code class="text-theme-green font-mono mt-2 inline-block">Settings > SCANNER_SETTINGS > API_KEY</code>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export & Footer -->
+    <footer class="bg-theme-bg1 border-t border-theme-border pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="logo.png" alt="JS+ Logo" class="h-8 w-8 object-contain">
+                        <span class="text-2xl font-bold text-theme-text1">
+                            JS+
+                        </span>
+                    </div>
+                    <p class="text-theme-text2 mb-6 max-w-sm text-sm leading-relaxed">
+                        For authorized security testing and bug bounty purposes only. Unauthorized access to computer systems is illegal.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/suchinsuthar" target="_blank" class="w-10 h-10 rounded-full bg-theme-bg2 border border-theme-border flex items-center justify-center text-theme-text2 hover:text-theme-green hover:border-theme-green transition-colors">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+                        <a href="https://buymeacoffee.com/suchinsuthar" target="_blank" class="w-10 h-10 rounded-full bg-theme-bg2 border border-theme-border flex items-center justify-center text-theme-text2 hover:text-[#FFDD00] hover:border-[#FFDD00] transition-colors shadow-lg hover:shadow-[#FFDD00]/20">
+                            <i class="fa-solid fa-mug-hot text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-theme-text1 font-bold mb-4 font-mono">Data Exports</h4>
+                    <ul class="space-y-2 text-theme-text2 text-sm">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-theme-green mt-1"></i> Structured JSON format</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-theme-green mt-1"></i> Raw URLs list</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-theme-green mt-1"></i> Keep histories purely local</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-theme-text1 font-bold mb-4 font-mono">Community</h4>
+                    <ul class="space-y-2 text-theme-text2 text-sm">
+                        <li><a href="https://github.com/suchinsuthar/JSplus-ext/issues" class="hover:text-theme-blue transition-colors flex items-center gap-2"><i class="fa-solid fa-bug w-4"></i> Report Bugs</a></li>
+                        <li><a href="https://github.com/suchinsuthar/JSplus-ext/pulls" class="hover:text-theme-green transition-colors flex items-center gap-2"><i class="fa-solid fa-code-pull-request w-4"></i> Submit PRs</a></li>
+                        <li><a href="https://github.com/4osp3l/0xJS" class="hover:text-theme-text1 transition-colors flex items-center gap-2"><i class="fa-solid fa-lightbulb w-4"></i> Inspired by 0xJS</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-theme-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs">
+                <p class="text-theme-text2">
+                    &copy; 2026 JS+ Extension. Created with <i class="fa-solid fa-heart text-theme-red mx-1"></i> by Suchin Suthar. MIT License.
+                </p>
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-1 bg-theme-bg2 border border-theme-border rounded text-theme-text2">v1.0.0</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
